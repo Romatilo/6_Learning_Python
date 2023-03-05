@@ -6,8 +6,8 @@
 #     A = 2; B = 3 -> 8
 
 def Exp(x, y):
-    if y == 1:
-        return x
+    if y == 0:
+        return 1
     return (Exp(x, y-1)) * x
 
 

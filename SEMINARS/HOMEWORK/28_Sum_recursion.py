@@ -11,7 +11,7 @@ def sum(x, y):
     return (sum(x, y-1))+1
 
 
-a = int(input("Введите число a-> "))
-b = int(input("Введите число b-> "))
+a = int(input("Введите число a -> "))
+b = int(input("Введите число b -> "))
 
 print('Сумма числе а и b ->', sum(a, b))
