@@ -19,5 +19,5 @@ print ("Отсортированное первое множество: ", list_
 print ("Отсортированное второе множество: ", list_two)
 
 # А теперь их объединим в общее множество, предварительно преобразовав каждый из списков в множество: 
-set_final = (set(list_one).union(set(list_two)))
-print ("Объединенные множества: ". set_final)
+set_final = (set(list_one).intersection(set(list_two)))
+print ("Объединенные множества: ", set_final)
