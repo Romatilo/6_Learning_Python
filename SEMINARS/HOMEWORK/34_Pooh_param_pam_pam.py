@@ -20,12 +20,36 @@ def Counting_vowels(word):
 # Список гласных букв
 list_vowels = 'АЕЁИОУЫЭЮЯ'
 
-phrase = 'пара-ра-рам рам-пам-папам па-ра-па-дам'
+phrase = 'параа-ра-рам рам-пам-папам па-ра-па-дам'
 # При помощи оъявленной выше функции создадим список, 
 # содержащий в себе количество гласных в каждом слове
 vowels_in_word = list(map(Counting_vowels,phrase.split()))
+print(vowels_in_word)
 # Проверим, все ли элементы списка vowels_in_word равны между собой:
 if all(x == vowels_in_word[0] for x in vowels_in_word):
     print ("Парам пам-пам")
 else:
     print ("Пам па-рам")
+
+
+    stroka1 = 'пара-ра-рам рам-пам-папам па-ра-па-дам'
+vowels = ['а', 'е', 'ё', 'и', 'й', 'о', 'у', 'ы', 'э', 'ю', 'я']
+phrases = stroka1.split()
+if len(phrases) < 2:
+ print('Количество фраз должно быть больше одной!')
+else:
+ countVowels = []
+ 
+ for i in phrases:
+  countVowels.append(len([x for x in i if x.lower() in vowels]))
+ 
+ if countVowels.count(countVowels[0]) == len(countVowels):
+  print('Парам пам-пам')
+ else:
+  print('Пам парам')
+
+list = [len([i for i in element if i in "АЕЁИОУЫЭЮЯаеёиоуыэюя"]) for element in input("Введите стихотворенье: ").split()]
+if all([i == list[0] for i in list]):
+    print("Парам пам-пам")
+else:
+    print("Пам парам")

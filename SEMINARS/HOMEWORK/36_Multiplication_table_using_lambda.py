@@ -18,7 +18,7 @@ def print_operation_table(operation, x, y):
             print(operation(i,j), end='\t')
         print()
 
-num_rows = 6
-num_columns = 6
+num_rows = 10
+num_columns = 10
 
 print_operation_table(lambda x, y: x * y, num_rows, num_columns)
