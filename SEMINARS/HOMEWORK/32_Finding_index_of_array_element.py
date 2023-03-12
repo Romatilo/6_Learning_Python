@@ -26,5 +26,4 @@ list_array = Form_array(lengthArray, 1, 10)
 print(list_array)
 
 print("Индексы элементов массива в заданном вами диапазоне -> ",
-      List_of_indexes_in_range
-      (list_array, a, b))
+      List_of_indexes_in_range(list_array, a, b))

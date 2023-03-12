@@ -1,0 +1,1 @@
+i in list if (i % 2) = 0: list_new.append(i**2)
