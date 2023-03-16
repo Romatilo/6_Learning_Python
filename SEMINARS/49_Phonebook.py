@@ -16,7 +16,7 @@ def write_csv(filename: str, data) -> str:
 
 
 def write_txt(filename: str, data) -> str:
-    file = open(f"{filename}.txt", 'w', encoding='utf-8')
+    file = open(filename + ".txt", 'w', encoding='utf-8')
     for lines in data:
         s = ', '.join(f'{v}' for k, v in lines.items())
         file.write(s + '\n')
@@ -25,6 +25,7 @@ def write_txt(filename: str, data) -> str:
 def get_file_name() -> str:
     name_of_the_file = input(
         'Введите название файла, который вы хотите сохранить -> ')
+    return name_of_the_file
 
 
 def show_menu() -> int:
@@ -89,5 +90,5 @@ while (choice != 6):
         write_csv('phonebook.csv', phone_book)
     elif choice == 5:
         file_name = get_file_name()
-        # write_txt(file_name, phone_book)
+        write_txt(file_name, phone_book)
     choice = show_menu()
