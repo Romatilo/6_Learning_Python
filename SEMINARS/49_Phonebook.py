@@ -34,8 +34,9 @@ def show_menu() -> int:
           "2. Найти абонента по фамилии\n"
           "3. Найти абонента по номеру телефона\n"
           "4. Добавить абонента в справочник\n"
-          "5. Сохранить справочник в текстовом формате\n"
-          "6. Закончить работу")
+          "5. Удалить абонента из справочника\n"
+          "6. Сохранить справочник в текстовом формате\n"
+          "7. Закончить работу")
     choice = int(input())
     return choice
 
@@ -63,6 +64,7 @@ def get_new_user() -> dict:
         'Телефон': input('Введите номер телефона -> '),
         'Описание': input('Введите описание -> ')
     }
+
     return record
 
 
@@ -71,11 +73,18 @@ def add_user(data, new_record) -> list:
     print(*data,  sep='\n')
 
 
+def delete_user(data, user_to_delete) -> list:
+    for key in data:
+        if key['Фамилия'].upper() == user_to_delete.upper():
+            del key
+            print(f'Абонент {user_to_delete} удален!')
+
+
 phone_book = read_csv('phonebook.csv')
 
 choice = show_menu()
 
-while (choice != 6):
+while (choice != 7):
     if choice == 1:
         print_result(phone_book)
     elif choice == 2:
@@ -89,6 +98,11 @@ while (choice != 6):
         add_user(phone_book, user_data)
         write_csv('phonebook.csv', phone_book)
     elif choice == 5:
+        user_data = input(
+            "Введите фамилию пользователя, которого вы хотите удалить -> ")
+        delete_user(phone_book, user_data)
+        write_csv('phonebook.csv', phone_book)
+    elif choice == 6:
         file_name = get_file_name()
         write_txt(file_name, phone_book)
     choice = show_menu()
