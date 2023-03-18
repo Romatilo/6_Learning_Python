@@ -1,3 +1,10 @@
+# Иванов,       Иван,       111,       описание Иванова
+# Петров,       Петр,       222,       описание Петрова
+# Васичкина,       Василиса,       333,       описание Васичкиной
+# Питонов,       Антон,       777,       умеет в Питон
+# 555,       333,       789,       dfdf
+
+
 def read_csv(filename: str) -> list:
     data = []
     fields = ["Фамилия", "Имя", "Телефон", "Описание"]
@@ -47,15 +54,15 @@ def print_result(data) -> list:
 
 def find_by_name(data, sirname) -> str:
     for key in data:
-        if key['Фамилия'].upper() == sirname.upper():
-            print(*key.values())
-
+        if key['Фамилия'].upper() == sirname.upper():     
+            return key.values()
+    return 'Такого пользователя нет!'
 
 def find_by_number(data, telephone_number) -> str:
     for key in data:
-        if key['Телефон'] == telephone_number:
-            print(*key.values())
-
+        if key['Телефон'] == telephone_number.strip():
+            return (key.values())
+    return 'Пользователя с таким номером телефона нет!'
 
 def get_new_user() -> dict:
     record = {
@@ -68,16 +75,17 @@ def get_new_user() -> dict:
     return record
 
 
-def add_user(data, new_record) -> list:
+def add_user(data: list, new_record) -> list:
     data.append(new_record)
     print(*data,  sep='\n')
 
 
-def delete_user(data, user_to_delete) -> list:
-    for key in data:
-        if key['Фамилия'].upper() == user_to_delete.upper():
-            del key
-            print(f'Абонент {user_to_delete} удален!')
+def delete_user(data: list, last_name: str) -> str:
+    for i in range(len(data)):
+        if data[i].get("Фамилия") == last_name:
+            del data[i]
+            return print (f"Абонент {last_name} успешно удален")
+    return print ("Такой абонент отсутствует в списке")
 
 
 phone_book = read_csv('phonebook.csv')
@@ -89,10 +97,10 @@ while (choice != 7):
         print_result(phone_book)
     elif choice == 2:
         name = (input("Введите фамилию абонента -> "))
-        print(find_by_name(phone_book, name))
+        print(*(find_by_name(phone_book, name)))
     elif choice == 3:
         number = input("Введите номер телефона абонента -> ")
-        print(find_by_number(phone_book, number))
+        print(*(find_by_number(phone_book, number)))
     elif choice == 4:
         user_data = get_new_user()
         add_user(phone_book, user_data)
